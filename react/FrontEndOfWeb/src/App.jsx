@@ -36,7 +36,7 @@ function Customer() {
   });
 
   const fetchCustomers = async () => {
-    const res = await axios.get("http://localhost:8080/customer/all");
+    const res = await axios.get("https://spring-hj4v.onrender.com/customer/all");
     setCustomers(res.data);
   };
 
@@ -52,9 +52,9 @@ function Customer() {
     setLoading(true);
     try {
       if (form.custid) {
-        await axios.put(`http://localhost:8080/customer/update/${form.custid}`, form);
+        await axios.put(`https://spring-hj4v.onrender.com/customer/update/${form.custid}`, form);
       } else {
-        await axios.post("http://localhost:8080/customer/insert", form);
+        await axios.post("https://spring-hj4v.onrender.com/customer/insert", form);
       }
       setForm({ custid: "", cname: "", caddress: "", ccity: "" });
       fetchCustomers();
@@ -66,7 +66,7 @@ function Customer() {
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:8080/customer/delete/${id}`);
+    await axios.delete(`https://spring-hj4v.onrender.com/customer/delete/${id}`);
     fetchCustomers();
   };
 
