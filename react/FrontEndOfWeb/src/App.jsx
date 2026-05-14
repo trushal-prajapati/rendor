@@ -168,7 +168,7 @@ function Booking() {
   });
 
   const fetchBookings = async () => {
-    const res = await axios.get("http://localhost:8098/booking/allBooking");
+    const res = await axios.get("https://spring-hj4v.onrender.com/booking/allBooking");
     setBookings(res.data);
   };
 
@@ -184,9 +184,9 @@ function Booking() {
     setLoading(true);
     try {
       if (form.booking_id) {
-        await axios.put(`http://localhost:8098/booking/update/${form.booking_id}`, form);
+        await axios.put(`https://spring-hj4v.onrender.com/booking/update/${form.booking_id}`, form);
       } else {
-        await axios.post("http://localhost:8098/booking/insertWithCustId", form);
+        await axios.post("https://spring-hj4v.onrender.com/booking/insertWithCustId", form);
       }
       setForm({ booking_id: "", flightname: "", customer_id: "" });
       fetchBookings();
@@ -198,7 +198,7 @@ function Booking() {
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:8098/booking/delete/${id}`);
+    await axios.delete(`https://spring-hj4v.onrender.com/booking/delete/${id}`);
     fetchBookings();
   };
 
