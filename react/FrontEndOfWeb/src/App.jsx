@@ -28,7 +28,6 @@ function Customer() {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
-    custid: "",
     cname: "",
     caddress: "",
     ccity: "",
@@ -55,7 +54,7 @@ function Customer() {
       } else {
         await axios.post("https://spring-hj4v.onrender.com/customer/insert", form);
       }
-      setForm({ custid: "", cname: "", caddress: "", ccity: "" });
+      setForm({ cname: "", caddress: "", ccity: "" });
       fetchCustomers();
     } catch (error) {
       console.error("Error submitting customer:", error);
