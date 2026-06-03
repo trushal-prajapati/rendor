@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/consultations/consultation-page.component.css"],
+  "sourcesContent": [".history-head {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 16px;\n  margin-bottom: 16px;\n  flex-wrap: wrap;\n}\n\n.history-head h2 {\n  margin: 0;\n}\n\n.history-filter select {\n  min-height: 40px;\n  min-width: min(320px, 100%);\n  border: 1px solid #d8e1ea;\n  border-radius: 6px;\n  background: #ffffff;\n  padding: 0 12px;\n}\n\n"],
+  "mappings": ";AAAA,CAAC;AACC,WAAS;AACT,eAAa;AACb,mBAAiB;AACjB,OAAK;AACL,iBAAe;AACf,aAAW;AACb;AAEA,CATC,aASa;AACZ,UAAQ;AACV;AAEA,CAAC,eAAe;AACd,cAAY;AACZ,aAAW,IAAI,KAAK,EAAE;AACtB,UAAQ,IAAI,MAAM;AAClB,iBAAe;AACf,cAAY;AACZ,WAAS,EAAE;AACb;",
+  "names": []
+}
