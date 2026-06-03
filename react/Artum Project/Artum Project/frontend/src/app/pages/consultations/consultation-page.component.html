@@ -1,0 +1,99 @@
+<section class="page">
+  <div class="toolbar">
+    <div>
+      <h1>Consultation Form</h1>
+      <p>Vitals, notes, and patient consultation history</p>
+    </div>
+    <button class="btn secondary" type="button" (click)="loadAppointments()">Refresh Appointments</button>
+  </div>
+
+  <section class="panel">
+    <h2>Complete Consultation</h2>
+
+    <form [formGroup]="consultationForm" (ngSubmit)="completeConsultation()" class="grid">
+      <div class="grid three">
+        <div class="field">
+          <label for="appointmentId">Appointment</label>
+          <select id="appointmentId" formControlName="appointmentId">
+            <option [ngValue]="0" disabled>Select appointment</option>
+            <option *ngFor="let appointment of openAppointments" [ngValue]="appointment.id">
+              #{{ appointment.id }} - {{ appointment.patientName }} - {{ appointment.doctorName }}
+            </option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="bloodPressure">Blood Pressure</label>
+          <input id="bloodPressure" type="text" formControlName="bloodPressure" placeholder="120/80">
+        </div>
+
+        <div class="field">
+          <label for="temperatureC">Temperature C</label>
+          <input id="temperatureC" type="number" step="0.1" min="30" max="45" formControlName="temperatureC">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="notes">Notes</label>
+        <textarea id="notes" formControlName="notes" placeholder="Short diagnosis or advice"></textarea>
+      </div>
+
+      <div class="actions">
+        <button class="btn" type="submit" [disabled]="saving || !openAppointments.length">
+          {{ saving ? 'Saving...' : 'Mark Complete' }}
+        </button>
+      </div>
+    </form>
+
+    <p *ngIf="message" class="notice">{{ message }}</p>
+    <p *ngIf="error" class="notice error">{{ error }}</p>
+    <p *ngIf="!openAppointments.length" class="empty">No booked appointment pending for today.</p>
+  </section>
+
+  <section class="panel">
+    <div class="history-head">
+      <h2>Completed Consultations</h2>
+      <div class="history-filter">
+        <select [(ngModel)]="historyPatientId" (change)="loadPatientHistory()">
+          <option [ngValue]="0" disabled>Select patient</option>
+          <option *ngFor="let patient of patients" [ngValue]="patient.id">
+            {{ patient.name }} - {{ patient.phoneNumber }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="table-wrap" *ngIf="consultations.length; else noConsultations">
+      <table>
+        <thead>
+          <tr>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Appointment</th>
+            <th>BP</th>
+            <th>Temp</th>
+            <th>Notes</th>
+            <th>Completed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let consultation of consultations">
+            <td>{{ consultation.patientName }}</td>
+            <td>{{ consultation.doctorName }}</td>
+            <td>{{ consultation.appointmentAt | date: 'short' }}</td>
+            <td>{{ consultation.bloodPressure }}</td>
+            <td>{{ consultation.temperatureC }} C</td>
+            <td>{{ consultation.notes || '-' }}</td>
+            <td>{{ consultation.completedAt | date: 'short' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ng-template #noConsultations>
+      <p class="empty">
+        {{ loadingHistory ? 'Loading consultations...' : 'No completed consultations for selected patient.' }}
+      </p>
+    </ng-template>
+  </section>
+</section>

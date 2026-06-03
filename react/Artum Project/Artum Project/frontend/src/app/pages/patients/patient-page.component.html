@@ -1,0 +1,90 @@
+<section class="page">
+  <div class="toolbar">
+    <div>
+      <h1>Patient Register/List</h1>
+      <p>Basic OPD patient details</p>
+    </div>
+  </div>
+
+  <section class="panel">
+    <h2>Register Patient</h2>
+
+    <form [formGroup]="patientForm" (ngSubmit)="savePatient()" class="grid">
+      <div class="grid two">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" type="text" formControlName="name" placeholder="Ravi Kumar">
+        </div>
+
+        <div class="field">
+          <label for="phoneNumber">Phone</label>
+          <input id="phoneNumber" type="tel" formControlName="phoneNumber" placeholder="9876543210">
+        </div>
+      </div>
+
+      <div class="grid two">
+        <div class="field">
+          <label for="gender">Gender</label>
+          <select id="gender" formControlName="gender">
+            <option *ngFor="let gender of genders" [value]="gender">{{ gender }}</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="age">Age</label>
+          <input id="age" type="number" min="0" max="130" formControlName="age">
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn" type="submit" [disabled]="saving">
+          {{ saving ? 'Saving...' : 'Save Patient' }}
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <section class="panel">
+    <div class="list-head">
+      <h2>Patients</h2>
+      <div class="search-row">
+        <input type="search" [(ngModel)]="searchTerm" placeholder="Search name or phone">
+        <button class="btn" type="button" (click)="loadPatients()" [disabled]="loading">Search</button>
+        <button class="btn secondary" type="button" (click)="clearSearch()" [disabled]="loading">Clear</button>
+      </div>
+    </div>
+
+    <p *ngIf="message" class="notice">{{ message }}</p>
+    <p *ngIf="error" class="notice error">{{ error }}</p>
+
+    <div class="table-wrap" *ngIf="patients.length; else noPatients">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Phone</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let patient of patients">
+            <td>{{ patient.id }}</td>
+            <td>{{ patient.name }}</td>
+            <td>{{ patient.gender }}</td>
+            <td>{{ patient.age }}</td>
+            <td>{{ patient.phoneNumber }}</td>
+            <td>{{ patient.createdAt | date: 'short' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ng-template #noPatients>
+      <p class="empty">{{ loading ? 'Loading patients...' : 'No patients found.' }}</p>
+    </ng-template>
+  </section>
+</section>
+

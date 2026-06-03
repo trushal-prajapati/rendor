@@ -1,0 +1,84 @@
+<section class="page">
+  <div class="toolbar">
+    <div>
+      <h1>Appointment Book/List</h1>
+      <p>Patient, date/time, and doctor mapping</p>
+    </div>
+    <button class="btn secondary" type="button" (click)="loadTodayAppointments()" [disabled]="loading">
+      Refresh Today
+    </button>
+  </div>
+
+  <section class="panel">
+    <h2>Book Appointment</h2>
+
+    <form [formGroup]="appointmentForm" (ngSubmit)="bookAppointment()" class="grid">
+      <div class="grid three">
+        <div class="field">
+          <label for="patientId">Patient</label>
+          <select id="patientId" formControlName="patientId">
+            <option [ngValue]="0" disabled>Select patient</option>
+            <option *ngFor="let patient of patients" [ngValue]="patient.id">
+              {{ patient.name }} - {{ patient.phoneNumber }}
+            </option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="appointmentAt">Date/Time</label>
+          <input id="appointmentAt" type="datetime-local" formControlName="appointmentAt">
+        </div>
+
+        <div class="field">
+          <label for="doctorName">Doctor</label>
+          <input id="doctorName" type="text" formControlName="doctorName" placeholder="Dr. Mehta">
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn" type="submit" [disabled]="saving || !patients.length">
+          {{ saving ? 'Booking...' : 'Book Appointment' }}
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>Today Appointments</h2>
+    <p *ngIf="message" class="notice">{{ message }}</p>
+    <p *ngIf="error" class="notice error">{{ error }}</p>
+
+    <div class="table-wrap" *ngIf="appointments.length; else noAppointments">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Patient</th>
+            <th>Phone</th>
+            <th>Doctor</th>
+            <th>Time</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of appointments">
+            <td>{{ appointment.id }}</td>
+            <td>{{ appointment.patientName }}</td>
+            <td>{{ appointment.phoneNumber }}</td>
+            <td>{{ appointment.doctorName }}</td>
+            <td>{{ appointment.appointmentAt | date: 'shortTime' }}</td>
+            <td>
+              <span class="status" [class.complete]="appointment.status === 'COMPLETED'">
+                {{ appointment.status }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ng-template #noAppointments>
+      <p class="empty">{{ loading ? 'Loading appointments...' : 'No appointments for today.' }}</p>
+    </ng-template>
+  </section>
+</section>

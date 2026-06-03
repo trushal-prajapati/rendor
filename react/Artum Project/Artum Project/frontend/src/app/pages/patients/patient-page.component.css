@@ -1,0 +1,27 @@
+.list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.list-head h2 {
+  margin: 0;
+}
+
+.search-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.search-row input {
+  min-height: 40px;
+  width: min(280px, 100%);
+  border: 1px solid #d8e1ea;
+  border-radius: 6px;
+  padding: 0 12px;
+}
+

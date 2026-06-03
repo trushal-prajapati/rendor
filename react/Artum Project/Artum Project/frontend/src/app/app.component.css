@@ -1,0 +1,64 @@
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 32px;
+  border-bottom: 1px solid #d8e1ea;
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.app-header p,
+.app-header h1 {
+  margin: 0;
+}
+
+.app-header p {
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.app-header h1 {
+  font-size: 24px;
+}
+
+nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 6px;
+  color: #334155;
+  padding: 0 14px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+nav a.active,
+nav a:hover {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.app-main {
+  width: min(1180px, calc(100% - 32px));
+  margin: 28px auto 56px;
+}
+
+@media (max-width: 680px) {
+  .app-header {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 16px;
+  }
+}
+
