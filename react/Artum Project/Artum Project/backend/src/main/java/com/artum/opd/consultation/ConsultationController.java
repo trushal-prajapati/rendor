@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/consultations")
+@CrossOrigin(origins = "https://rendor-opq8.onrender.com")
 public class ConsultationController {
 
     private final ConsultationService consultationService;
@@ -23,8 +24,7 @@ public class ConsultationController {
     @PostMapping("/appointment/{appointmentId}/complete")
     public ConsultationResponse complete(
             @PathVariable Long appointmentId,
-            @Valid @RequestBody CompleteConsultationRequest request
-    ) {
+            @Valid @RequestBody CompleteConsultationRequest request) {
         return consultationService.complete(appointmentId, request);
     }
 
@@ -33,4 +33,3 @@ public class ConsultationController {
         return consultationService.byPatient(patientId);
     }
 }
-

@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/appointments")
+@CrossOrigin(origins = "https://rendor-opq8.onrender.com")
 public class AppointmentController {
 
     private final AppointmentService appointmentService;
@@ -38,4 +39,3 @@ public class AppointmentController {
         return appointmentService.byPatient(patientId);
     }
 }
-
