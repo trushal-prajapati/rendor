@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/patients/patient-page.component.css"],
-  "sourcesContent": [".list-head {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 16px;\n  margin-bottom: 16px;\n  flex-wrap: wrap;\n}\n\n.list-head h2 {\n  margin: 0;\n}\n\n.search-row {\n  display: flex;\n  gap: 10px;\n  flex-wrap: wrap;\n}\n\n.search-row input {\n  min-height: 40px;\n  width: min(280px, 100%);\n  border: 1px solid #d8e1ea;\n  border-radius: 6px;\n  padding: 0 12px;\n}\n\n"],
-  "mappings": ";AAAA,CAAC;AACC,WAAS;AACT,eAAa;AACb,mBAAiB;AACjB,OAAK;AACL,iBAAe;AACf,aAAW;AACb;AAEA,CATC,UASU;AACT,UAAQ;AACV;AAEA,CAAC;AACC,WAAS;AACT,OAAK;AACL,aAAW;AACb;AAEA,CANC,WAMW;AACV,cAAY;AACZ,SAAO,IAAI,KAAK,EAAE;AAClB,UAAQ,IAAI,MAAM;AAClB,iBAAe;AACf,WAAS,EAAE;AACb;",
-  "names": []
-}

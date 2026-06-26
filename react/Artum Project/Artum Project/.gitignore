@@ -1,8 +1,0 @@
-node_modules/
-.idea/
-.vscode/
-*.log
-*.iml
-.DS_Store
-backend/.mvn/wrapper/maven-wrapper.jar
-

@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/appointments/appointment-page.component.css"],
-  "sourcesContent": [":host {\n  display: block;\n}\n\n"],
-  "mappings": ";AAAA;AACE,WAAS;AACX;",
-  "names": []
-}
