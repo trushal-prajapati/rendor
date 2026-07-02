@@ -9,7 +9,7 @@ import type {
   PatientRegisterPayload,
 } from './types';
 
-const API_BASE = '/api';
+const API_BASE = 'https://rendor-8xo7.onrender.com';
 
 function getToken(): string | null {
   return localStorage.getItem('clinic_token');
