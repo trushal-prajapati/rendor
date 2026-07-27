@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { LoginView } from './components/LoginView';
+import { RegisterView } from './components/RegisterView';
 import { DoctorDashboard } from './components/DoctorDashboard';
 import { ReceptionistDashboard } from './components/ReceptionistDashboard';
 import { ProtectedRoute } from './components/ProtectedRoute';
@@ -21,6 +22,7 @@ function App() {
       <AnimatedCursor />
       <Routes>
         <Route path="/login" element={<LoginView />} />
+        <Route path="/register" element={<RegisterView />} />
         <Route
           path="/"
           element={

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Heart, Lock, Mail, Sparkles, UserCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -128,6 +128,15 @@ export const LoginView: React.FC = () => {
               </button>
             ))}
           </div>
+        </div>
+
+        <div className="mt-6 pt-6 border-t border-slate-100 text-center">
+          <p className="text-xs text-slate-500">
+            Don't have an account?{' '}
+            <Link to="/register" className="font-bold text-indigo-600 hover:text-indigo-700 transition-colors">
+              Register here
+            </Link>
+          </p>
         </div>
       </motion.div>
     </div>
