@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useCursor } from '../context/CursorContext';
 import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, ShieldCheck, Heart, Sparkles, Check } from 'lucide-react';
+import { User, ShieldCheck, Sparkles, Check } from 'lucide-react';
 
 interface RegistrationViewProps {
   onTriggerLog: (type: 'info' | 'success' | 'warning' | 'error', msg: string) => void;
