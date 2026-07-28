@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Heart, Lock, Mail, UserCircle, User, Droplets, AlertTriangle } from 'lucide-react';
+import { Lock, Mail, UserCircle, User, Droplets, AlertTriangle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import type { PatientRegisterPayload } from '../api/types';
 
