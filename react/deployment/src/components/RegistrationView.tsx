@@ -9,15 +9,15 @@ interface RegistrationViewProps {
   onCompleteRegistration: () => void;
 }
 
-export const RegistrationView: React.FC<RegistrationViewProps> = ({
+export const RegistrationView = ({
   onTriggerLog,
   onCompleteRegistration,
-}) => {
+}: RegistrationViewProps) => {
   const { setCursorType, setCursorLabel } = useCursor();
   const { register } = useAuth();
   const [step, setStep] = useState(1);
   const [saving, setSaving] = useState(false);
-  
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -102,20 +102,19 @@ export const RegistrationView: React.FC<RegistrationViewProps> = ({
   return (
     <div className="w-full max-w-xl mx-auto py-8">
       <div className="glass-panel p-8 rounded-3xl border border-white/20 shadow-xl relative overflow-hidden">
-        
+
         {/* Step Indicator Header */}
         <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-100/60">
           <div className="flex gap-2.5">
             {[1, 2, 3].map((s) => (
               <div
                 key={s}
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
-                  step === s
-                    ? 'bg-indigo-600 text-white shadow-md'
-                    : step > s
+                className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${step === s
+                  ? 'bg-indigo-600 text-white shadow-md'
+                  : step > s
                     ? 'bg-indigo-50 text-indigo-600 border border-indigo-100'
                     : 'bg-slate-50 text-slate-400 border border-slate-100'
-                }`}
+                  }`}
               >
                 {step > s ? <Check size={14} /> : s}
               </div>
@@ -249,11 +248,10 @@ export const RegistrationView: React.FC<RegistrationViewProps> = ({
                           onClick={() => toggleConcern(concern)}
                           onMouseEnter={() => handleMouseEnter(`Tag ${concern}`)}
                           onMouseLeave={handleMouseLeave}
-                          className={`px-3 py-2 rounded-xl text-left text-xs transition-all border ${
-                            isChecked
-                              ? 'bg-indigo-50 border-indigo-200 text-indigo-700 font-semibold'
-                              : 'bg-white/40 border-slate-100 text-slate-600 hover:bg-slate-50'
-                          }`}
+                          className={`px-3 py-2 rounded-xl text-left text-xs transition-all border ${isChecked
+                            ? 'bg-indigo-50 border-indigo-200 text-indigo-700 font-semibold'
+                            : 'bg-white/40 border-slate-100 text-slate-600 hover:bg-slate-50'
+                            }`}
                         >
                           {concern}
                         </button>
@@ -292,7 +290,7 @@ export const RegistrationView: React.FC<RegistrationViewProps> = ({
                     <ShieldCheck size={36} />
                   </div>
                 </div>
-                
+
                 <h3 className="font-extrabold text-xl text-slate-800">Review & Consent</h3>
                 <p className="text-xs text-slate-400 max-w-sm mx-auto leading-relaxed">
                   By completing registration, you consent to secure charting storage in accordance with standard clinical privacy regulations.
